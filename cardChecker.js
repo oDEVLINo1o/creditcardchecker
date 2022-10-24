@@ -1,3 +1,10 @@
+
+let button = document.getElementById('button');
+let answer = document.getElementById('answer');
+
+
+
+
 /*// All valid credit card numbers
 const valid1 = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
 const valid2 = [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9];
@@ -20,7 +27,7 @@ const mystery4 = [4, 9, 2, 9, 8, 7, 7, 1, 6, 9, 2, 1, 7, 0, 9, 3];
 const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3];*/
 
 // An array of all the arrays above
-const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5];
+//const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5];
 
 
 // Add your functions below:
@@ -129,24 +136,27 @@ const idInvalidCardCompanies = arr => {
 console.log(idInvalidCardCompanies(invalidCards));
 console.log(companyArr)*/
 
-const testNum = document.getElementById('num').Value;
-const button = document.getElementById('button');
-const answer = document.getElementById('answer');
-
-
 
 function valid () {
-  if (testNum.length > 12 && testNum.length < 16) {
-    if (validateCred(testNum) === true) {
-      answer.innerHTML = 'Your Card is Valid!';
+  if (document.getElementById('num').value) {
+    let testNum = document.getElementById('num').value;
+
+    if (testNum.length > 12 && testNum.length < 17) {
+      if (validateCred(testNum) === true) {
+        answer.innerHTML = 'Your Card is Valid!';
+      }
+      else {
+        answer.innerHTML = 'Credit Card is not Valid please contact your Credit Card company!';
+      }
     }
     else {
-      answer.innerHTML = 'Credit Card is not Valid please contact your Credit Card company!';
+      answer.innerHTML = 'Please check the card number and try again';
     }
   }
   else {
-    answer.innerHTML = 'Please check the card number and try again';
+    answer.innerHTML = 'Please enter a card number!'
   }
+  
 }
 
 button.addEventListener('click', valid);
